@@ -14,10 +14,6 @@ app = Flask(__name__)
 def hello():
     return "Hello, World!"
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
-
 logging.basicConfig(
     level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
@@ -53,7 +49,11 @@ bot = Client(
 bot.start()
 logger.info("Bot has started.")
 logger.info("**Bot Started**\n\n**Pyrogram Version:** %s \n**Layer:** %s", __version__, layer)
-logger.info("Developed by github.com/kalanakt Sponsored by www.netronk.com")
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
+
 idle()
 bot.stop()
 logger.info("Bot Stopped ;)")
