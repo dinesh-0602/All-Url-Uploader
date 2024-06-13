@@ -5,14 +5,16 @@ from pyrogram import Client, idle, __version__
 
 from config import Config
 
-from flask import Flask
+from flask import Flask, request
 import os
+import pyrogram
 
 app = Flask(__name__)
 
-@app.route('/')
-def hello():
-    return "Hello, World!"
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    # handle webhook
+    return "OK"
 
 logging.basicConfig(
     level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
